@@ -1,10 +1,132 @@
-body { font-family: Arial, sans-serif; margin:0; padding:0; }
-header { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#f9f4f7; }
-.logo { font-weight:bold; font-size:24px; color:#b35d8d; }
-nav a { margin:0 10px; text-decoration:none; color:#444; }
-.hero { text-align:center; padding:50px; background:#ffeef5; }
-.products, .made-to-order, .recent-creations, .about { padding:40px 20px; text-align:center; }
-.product-grid { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-.product-card { border:1px solid #ddd; padding:15px; width:200px; background:white; border-radius:8px; }
-.video-grid { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
-footer { background:#333; color:white; padding:20px; text-align:center; }
+/* Base */
+:root{
+  --bg:#ffffff;
+  --ink:#222;
+  --muted:#6b6b6b;
+  --line:#eee;
+  --chip:#f5f5f5;
+  --brand:#9c6aa3;        /* gentle lavender-plum */
+  --brand-dark:#7f4f86;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* Typography */
+.script-xl{
+  font-family:"Dancing Script", cursive;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  font-style: italic;
+  line-height:1.05;
+  letter-spacing:.2px;
+  color:var(--brand-dark);
+}
+.script-lg{
+  font-family:"Dancing Script", cursive;
+  font-size: clamp(28px, 4.5vw, 44px);
+  font-weight: 700;
+  font-style: italic;
+  margin: 8px 0 18px;
+  color:var(--brand-dark);
+}
+
+h3.card-title{font-size:18px;margin:0 0 6px}
+.card-desc{color:var(--muted);font-size:14px;margin:0 0 10px}
+.price{font-weight:600}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);
+}
+.header-inner{
+  max-width:1200px;margin:0 auto;padding:10px 16px;
+  display:grid;grid-template-columns: 180px 1fr auto;gap:16px;align-items:center;
+}
+.brand-logo{height:44px;width:auto}
+
+.search-bar{display:flex;gap:8px;align-items:center;justify-content:center}
+.search-bar input{
+  width:100%;max-width:640px;padding:12px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;
+}
+.search-bar button{
+  padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;
+}
+
+.header-actions{display:flex;align-items:center;gap:14px;justify-self:end}
+.header-actions .link{font-weight:500}
+.header-actions .cart{font-size:22px}
+
+/* Brand hero */
+.brand-hero{
+  max-width:1200px;margin:24px auto 12px;padding:0 16px;text-align:left;
+}
+.brand-hero__content{
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+}
+.brand-hero__logo{height:82px;width:auto}
+.sublede{margin:6px 0 0;color:var(--muted)}
+
+/* Chips */
+.chips{max-width:1200px;margin:8px auto 0;padding:0 16px;display:flex;gap:10px;flex-wrap:wrap}
+.chip{
+  padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--chip);
+  cursor:pointer;font-weight:500;
+}
+.chip:hover{border-color:#ddd}
+
+/* Sections */
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+.section{padding:28px 0;border-top:1px solid var(--line)}
+.highlight{background:#faf8fb;border:1px solid var(--line);border-radius:16px;margin-top:12px}
+.highlight-inner{padding:22px 18px;text-align:center}
+.trust-note{color:var(--muted);margin-top:-8px;margin-bottom:18px}
+
+/* Grid & Cards (Etsy-like) */
+.grid{
+  display:grid;gap:18px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  transition:box-shadow .2s, transform .05s;
+}
+.card:hover{box-shadow:0 8px 20px rgba(0,0,0,.06);transform:translateY(-1px)}
+.card-media{aspect-ratio: 4/3; background:#fff; overflow:hidden}
+.card-media img{width:100%;height:100%;object-fit:cover}
+.card-body{padding:12px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+
+/* Videos */
+.grid.videos .video-card .video-frame{aspect-ratio:16/9;background:#000}
+.video-frame iframe{width:100%;height:100%}
+
+/* Buttons */
+.btn{
+  appearance:none;border:none;background:#fff;border:1px solid var(--line);
+  padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600;
+}
+.btn:hover{border-color:#ddd}
+.btn-primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn-primary:hover{background:var(--brand-dark)}
+
+/* About */
+.about p{max-width:750px;margin:0 auto;color:var(--muted)}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--line);margin-top:32px}
+.footer-inner{
+  max-width:1200px;margin:0 auto;padding:18px 16px;display:flex;gap:12px;flex-wrap:wrap;
+  align-items:center;justify-content:space-between;color:var(--muted)
+}
+.footer-links, .socials{display:flex;gap:12px;flex-wrap:wrap}
+.footer-links a:hover{text-decoration:underline}
+
+/* Responsive */
+@media (max-width: 760px){
+  .header-inner{grid-template-columns: 1fr auto;gap:10px}
+  .search-bar{grid-column: 1 / -1;order:3}
+  .brand-hero__logo{height:64px}
+}
