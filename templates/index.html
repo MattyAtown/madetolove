@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MadeToLove</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">MadeToLove</div>
+        <input type="text" placeholder="Search products...">
+        <nav>
+            <a href="#">Shop</a>
+            <a href="#">Made to Order</a>
+            <a href="#">Recent Creations</a>
+            <a href="#">About</a>
+            <a href="#">Cart 🛒</a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h1>Handmade with Love, Crafted for You</h1>
+        <button>Shop Now</button>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.desc }}</p>
+                <span>{{ product.price }}</span>
+                <button>Add to Cart</button>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Made to Order -->
+    <section class="made-to-order">
+        <h2>Made to Order</h2>
+        <p>Choose a design, suggest an idea, and get a custom quote.</p>
+        <button>Request Custom Order</button>
+    </section>
+
+    <!-- Recent Creations -->
+    <section class="recent-creations">
+        <h2>Recent Creations</h2>
+        <div class="video-grid">
+            {% for item in recent_creations %}
+            <div class="video-card">
+                <h3>{{ item.title }}</h3>
+                <iframe src="{{ item.video }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <h2>About Thira</h2>
+        <p>MadeToLove was born from a passion for crafting and a belief that handmade creations bring warmth and joy. Every piece is made with love, care, and creativity.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 MadeToLove.com</p>
+        <div class="socials">
+            <a href="#">Instagram</a> | <a href="#">Facebook</a>
+        </div>
+    </footer>
+</body>
+</html>

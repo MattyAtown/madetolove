@@ -1,0 +1,10 @@
+body { font-family: Arial, sans-serif; margin:0; padding:0; }
+header { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; background:#f9f4f7; }
+.logo { font-weight:bold; font-size:24px; color:#b35d8d; }
+nav a { margin:0 10px; text-decoration:none; color:#444; }
+.hero { text-align:center; padding:50px; background:#ffeef5; }
+.products, .made-to-order, .recent-creations, .about { padding:40px 20px; text-align:center; }
+.product-grid { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
+.product-card { border:1px solid #ddd; padding:15px; width:200px; background:white; border-radius:8px; }
+.video-grid { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+footer { background:#333; color:white; padding:20px; text-align:center; }
