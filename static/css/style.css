@@ -45,7 +45,7 @@ h3.card-title{font-size:18px;margin:0 0 6px}
   max-width:1200px;margin:0 auto;padding:10px 16px;
   display:grid;grid-template-columns: 180px 1fr auto;gap:16px;align-items:center;
 }
-.brand-logo{height:44px;width:auto}
+.brand-logo{max-height:64px;width:auto}      /* header logo */
 
 .search-bar{display:flex;gap:8px;align-items:center;justify-content:center}
 .search-bar input{
@@ -66,7 +66,7 @@ h3.card-title{font-size:18px;margin:0 0 6px}
 .brand-hero__content{
   display:flex;align-items:center;gap:22px;flex-wrap:wrap;
 }
-.brand-hero__logo{height:82px;width:auto}
+.brand-hero__logo{max-height:110px;width:auto}  /* banner hero logo */
 .sublede{margin:6px 0 0;color:var(--muted)}
 
 /* Chips */
@@ -130,3 +130,4 @@ h3.card-title{font-size:18px;margin:0 0 6px}
   .search-bar{grid-column: 1 / -1;order:3}
   .brand-hero__logo{height:64px}
 }
+
