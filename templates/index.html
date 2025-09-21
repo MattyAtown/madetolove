@@ -1,79 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MadeToLove</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MadeToLove – Handmade with Love</title>
+
+  <!-- Fonts: Handwritten headline + clean body -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">MadeToLove</div>
-        <input type="text" placeholder="Search products...">
-        <nav>
-            <a href="#">Shop</a>
-            <a href="#">Made to Order</a>
-            <a href="#">Recent Creations</a>
-            <a href="#">About</a>
-            <a href="#">Cart 🛒</a>
-        </nav>
-    </header>
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <img class="brand-logo" src="{{ url_for('static', filename='images/madetolovelogo.png') }}" alt="MadeToLove logo" />
+      </a>
 
-    <!-- Hero Banner -->
-    <section class="hero">
-        <h1>Handmade with Love, Crafted for You</h1>
-        <button>Shop Now</button>
-    </section>
+      <form class="search-bar" role="search" aria-label="Search products">
+        <input type="search" placeholder="Search handmade items…" />
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
 
-    <!-- Product Grid -->
-    <section class="products">
-        <h2>Our Products</h2>
-        <div class="product-grid">
-            {% for product in products %}
-            <div class="product-card">
-                <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.desc }}</p>
-                <span>{{ product.price }}</span>
-                <button>Add to Cart</button>
+      <nav class="header-actions">
+        <a href="#" class="link">Sign in</a>
+        <a href="#" class="link">Wishlist</a>
+        <a href="#" class="cart" aria-label="Cart">🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Brand Banner: logo + biggest headline beside it -->
+  <section class="brand-hero">
+    <div class="brand-hero__content">
+      <img class="brand-hero__logo" src="{{ url_for('static', filename='images/madetolovelogo.png') }}" alt="MadeToLove logo large">
+      <h1 class="script-xl">Handmade Treasures, Made To Love</h1>
+    </div>
+    <p class="sublede">Soft knits, joyful crochet, and custom pieces—crafted gently by Thira.</p>
+  </section>
+
+  <!-- Category chips (optional) -->
+  <section class="chips">
+    <button class="chip">All</button>
+    <button class="chip">Knitted</button>
+    <button class="chip">Crochet</button>
+    <button class="chip">Pipe Cleaner Art</button>
+    <button class="chip">Custom / Made to Order</button>
+  </section>
+
+  <!-- Products Grid -->
+  <main class="container">
+    <section class="section">
+      <h2 class="script-lg">Shop New Arrivals</h2>
+      <div class="grid">
+        {% for product in products %}
+        <article class="card">
+          <div class="card-media">
+            <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">{{ product.name }}</h3>
+            <p class="card-desc">{{ product.desc }}</p>
+            <div class="card-foot">
+              <span class="price">{{ product.price }}</span>
+              <button class="btn">Add to cart</button>
             </div>
-            {% endfor %}
-        </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
     </section>
 
-    <!-- Made to Order -->
-    <section class="made-to-order">
-        <h2>Made to Order</h2>
-        <p>Choose a design, suggest an idea, and get a custom quote.</p>
-        <button>Request Custom Order</button>
+    <!-- Made to Order CTA -->
+    <section class="section highlight">
+      <div class="highlight-inner">
+        <h2 class="script-lg">Made to Order</h2>
+        <p>Have an idea or need a special gift? Choose a design or suggest your own and get a quick quote.</p>
+        <a href="/made-to-order" class="btn btn-primary">Request a Custom Piece</a>
+      </div>
     </section>
 
-    <!-- Recent Creations -->
-    <section class="recent-creations">
-        <h2>Recent Creations</h2>
-        <div class="video-grid">
-            {% for item in recent_creations %}
-            <div class="video-card">
-                <h3>{{ item.title }}</h3>
-                <iframe src="{{ item.video }}" frameborder="0" allowfullscreen></iframe>
-            </div>
-            {% endfor %}
-        </div>
+    <!-- Recent Creations (videos) -->
+    <section class="section">
+      <h2 class="script-lg">Recent Creations</h2>
+      <p class="trust-note">Every item is handmade by Thira—no factories, no reselling.</p>
+      <div class="grid videos">
+        {% for item in recent_creations %}
+        <article class="card video-card">
+          <div class="card-media video-frame">
+            <iframe src="{{ item.video }}" title="{{ item.title }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">{{ item.title }}</h3>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
     </section>
 
     <!-- About -->
-    <section class="about">
-        <h2>About Thira</h2>
-        <p>MadeToLove was born from a passion for crafting and a belief that handmade creations bring warmth and joy. Every piece is made with love, care, and creativity.</p>
+    <section class="section about">
+      <h2 class="script-lg">About Thira</h2>
+      <p>MadeToLove is a gentle studio of handmade pieces, created slowly and thoughtfully. Each stitch is a moment of calm, each item a small joy crafted to be loved and kept.</p>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 MadeToLove.com</p>
-        <div class="socials">
-            <a href="#">Instagram</a> | <a href="#">Facebook</a>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>&copy; 2025 MadeToLove.com</div>
+      <nav class="footer-links">
+        <a href="#">About</a>
+        <a href="/made-to-order">Made to Order</a>
+        <a href="#">FAQ</a>
+        <a href="#">Privacy</a>
+      </nav>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <span>·</span>
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
