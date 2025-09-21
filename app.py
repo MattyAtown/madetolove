@@ -15,7 +15,7 @@ top_ranges = {
         {"name":"Pastel Egg Cozies","desc":"Set of 4","price":"£14","image":"easter_eggcozies.jpg"},
     ],
     "Knitted Halloween Range": [
-        {"name":"Pumpkin Plush","desc":"Soft knit pumpkin","price":"£16","image":"halloween_pumpkin.jpg"},
+        {"name":"Pumpkin Plush","desc":"Soft knit pumpkin","price":"£16","image":"halloween_pumpkin1.jpg"},
         {"name":"Spooky Bat","desc":"Cute, not scary!","price":"£18","image":"halloween_bat.jpg"},
     ],
     "Knitted Home Range": [
@@ -75,3 +75,4 @@ def made_to_order():
 
 
     return render_template("made_to_order.html")
+
