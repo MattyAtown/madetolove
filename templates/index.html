@@ -48,18 +48,26 @@
     <button class="chip">Custom / Made to Order</button>
   </section>
 
-  <!-- Products Grid -->
-  <main class="container">
-    <section class="section">
-      <h2 class="script-lg">Shop New Arrivals</h2>
+  <!-- Grouped Top Sellers -->
+<main class="container">
+  <section class="section">
+    <h2 class="script-lg">Top Sellers by Range</h2>
+
+    {% for range_name, items in top_ranges.items() %}
+    <div class="range-block">
+      <div class="range-header">
+        <h3 class="script-lg" style="margin:0;">{{ range_name }}</h3>
+        <a class="link" href="#" aria-label="View more in {{ range_name }}">View more →</a>
+      </div>
+
       <div class="grid">
-        {% for product in products %}
+        {% for product in items %}
         <article class="card">
           <div class="card-media">
             <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
           </div>
           <div class="card-body">
-            <h3 class="card-title">{{ product.name }}</h3>
+            <h4 class="card-title">{{ product.name }}</h4>
             <p class="card-desc">{{ product.desc }}</p>
             <div class="card-foot">
               <span class="price">{{ product.price }}</span>
@@ -69,42 +77,43 @@
         </article>
         {% endfor %}
       </div>
-    </section>
+    </div>
+    {% endfor %}
+  </section>
 
-    <!-- Made to Order CTA -->
-    <section class="section highlight">
-      <div class="highlight-inner">
-        <h2 class="script-lg">Made to Order</h2>
-        <p>Have an idea or need a special gift? Choose a design or suggest your own and get a quick quote.</p>
-        <a href="/made-to-order" class="btn btn-primary">Request a Custom Piece</a>
-      </div>
-    </section>
+  <!-- Made to Order CTA (unchanged) -->
+  <section class="section highlight">
+    <div class="highlight-inner">
+      <h2 class="script-lg">Made to Order</h2>
+      <p>Have an idea or need a special gift? Choose a design or suggest your own and get a quick quote.</p>
+      <a href="/made-to-order" class="btn btn-primary">Request a Custom Piece</a>
+    </div>
+  </section>
 
-    <!-- Recent Creations (videos) -->
-    <section class="section">
-      <h2 class="script-lg">Recent Creations</h2>
-      <p class="trust-note">Every item is handmade by Thira—no factories, no reselling.</p>
-      <div class="grid videos">
-        {% for item in recent_creations %}
-        <article class="card video-card">
-          <div class="card-media video-frame">
-            <iframe src="{{ item.video }}" title="{{ item.title }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">{{ item.title }}</h3>
-          </div>
-        </article>
-        {% endfor %}
-      </div>
-    </section>
+  <!-- Recent Creations (unchanged) -->
+  <section class="section">
+    <h2 class="script-lg">Recent Creations</h2>
+    <p class="trust-note">Every item is handmade by Thira—no factories, no reselling.</p>
+    <div class="grid videos">
+      {% for item in recent_creations %}
+      <article class="card video-card">
+        <div class="card-media video-frame">
+          <iframe src="{{ item.video }}" title="{{ item.title }}" frameborder="0" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{ item.title }}</h3>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
 
-    <!-- About -->
-    <section class="section about">
-      <h2 class="script-lg">About Thira</h2>
-      <p>MadeToLove is a gentle studio of handmade pieces, created slowly and thoughtfully. Each stitch is a moment of calm, each item a small joy crafted to be loved and kept.</p>
-    </section>
-  </main>
-
+  <!-- About (unchanged) -->
+  <section class="section about">
+    <h2 class="script-lg">About Thira</h2>
+    <p>MadeToLove is a gentle studio of handmade pieces, created slowly and thoughtfully. Each stitch is a moment of calm, each item a small joy crafted to be loved and kept.</p>
+  </section>
+</main>
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
@@ -124,3 +133,4 @@
   </footer>
 </body>
 </html>
+
